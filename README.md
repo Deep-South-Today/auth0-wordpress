@@ -39,8 +39,8 @@ This is a modified version of the Auth0 plugin for wordpress forked from [auth0/
 2. Contact Kinsta Support to exclude **/login** from caching
 3. In Cloudflare, add the cache rule `(http.request.uri.path eq "/login")` to the domain
 4. In the [Auth0 dashboard](https://auth0.com), add the new domain to
-   * Allowed Callback URLs: https://new-domain.org/login/
-   * Allowed Logout URLs: https://*.new-domain.org
+   * Allowed Callback URLs: `https://domain.org/login/`
+   * Allowed Logout URLs: `https://*.domain.org`
      
 
 
