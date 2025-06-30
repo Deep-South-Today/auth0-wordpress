@@ -1,7 +1,7 @@
 # Auth0 Wordpress
 
 ## Overview
-This is a modified version of the Auth0 plugin for wordpress forked from [https://github.com/auth0/wordpress](auth0/wordpress) for use on DST sites.
+This is a modified version of the Auth0 plugin for wordpress forked from [auth0/wordpress](https://github.com/auth0/wordpress) for use on DST sites.
 
 ## Installation
 
@@ -35,10 +35,10 @@ This is a modified version of the Auth0 plugin for wordpress forked from [https:
 
 ## Setting up a new domain
 
-1. Install [https://wordpress.org/plugins/wps-hide-login/](WPS Hide Login) and change the login URL to **login**
+1. Install [WPS Hide Login](https://wordpress.org/plugins/wps-hide-login/) and change the login URL to **login**
 2. Contact Kinsta Support to exclude **/login** from caching
 3. In Cloudflare, add the cache rule `(http.request.uri.path eq "/login")` to the domain
-4. In the [https://auth0.com](Auth0 dashboard), add the new domain to
+4. In the [Auth0 dashboard](https://auth0.com), add the new domain to
    * Allowed Callback URLs: https://new-domain.org/login/
    * Allowed Logout URLs: https://*.new-domain.org
      
