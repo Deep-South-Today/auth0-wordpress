@@ -530,7 +530,14 @@ final class Authentication extends Base
                     wp_set_current_user($wpUser->ID);
                     wp_set_auth_cookie($wpUser->ID, true);
                     do_action('wp_login', $wpUser->user_login, $wpUser);
-                    wp_redirect('/');
+                    wp_redirect('/wp-admin');
+                    exit;
+                } else {
+                    wp_destroy_current_session();
+                    wp_clear_auth_cookie();
+                    wp_set_current_user( 0 );
+                    $this->getSdk()->clear();
+                    wp_redirect($this->getSdk()->logout(get_site_url().'?error=access_denied'));
                     exit;
                 }
             }
