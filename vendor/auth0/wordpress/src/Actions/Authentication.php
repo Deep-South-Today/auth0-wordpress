@@ -567,6 +567,7 @@ final class Authentication extends Base
     public function onLogout(): never
     {
         wp_logout();
+        $this->destroy_all_domain_cookies();
         wp_redirect($this->getSdk()->logout(get_site_url()));
         exit;
     }
@@ -729,4 +730,15 @@ final class Authentication extends Base
 
         return null;
     }
+    public function destroy_all_domain_cookies() {
+    // Get and delete all cookies set for this domain
+    if (isset($_COOKIE)) {
+        foreach ($_COOKIE as $cookie_name => $cookie_value) {
+            setcookie($cookie_name, '', time() - 3600, '/');
+            setcookie($cookie_name, '', time() - 3600, '/', $_SERVER['HTTP_HOST']);
+            setcookie($cookie_name, '', time() - 3600, '/', '.' . $_SERVER['HTTP_HOST']);
+            unset($_COOKIE[$cookie_name]);
+        }
+    }
+}
 }
